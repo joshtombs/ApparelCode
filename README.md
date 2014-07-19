@@ -1,9 +1,11 @@
 ApparelCode
 ===========
 
-### To Clone Repo
+### Setup
 - Register SSH Keys with Github
 - `git clone` + url from right side of repo
+- Make sure you have all of the below 
+- To setup database, make sure postgresql is installed and run `rake db:setup`
 
 ### Using:
 - Sublime Text
