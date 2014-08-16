@@ -6,14 +6,30 @@
 
     <title>Apparel Code</title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "vendor/modernizr, 'data-turbolinks-track' => true" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-
-    <%= yield %>
+  <body class="row">
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <header class="row header">
+          <hr> 
+            <%= render 'shared/header'%>
+          <hr>
+        </header>
+        <section>
+          <%= render 'shared/sidebar' %>
+        </section>
+        <section class ="row">
+          <%= yield %>
+        </section>
+        <footer class="row">
+          <%= render 'shared/footer' %>
+        </footer>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
