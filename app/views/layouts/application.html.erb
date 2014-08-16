@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
   <title>ApparelCode</title>
@@ -21,3 +22,39 @@
   </div>
 </body>
 </html>
+=======
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Apparel Code</title>
+
+    <%= stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "vendor/modernizr, 'data-turbolinks-track' => true" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="row">
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <header class="row header">
+          <hr> 
+            <%= render 'shared/header'%>
+          <hr>
+        </header>
+        <section>
+          <%= render 'shared/sidebar' %>
+        </section>
+        <section class ="row">
+          <%= yield %>
+        </section>
+        <footer class="row">
+          <%= render 'shared/footer' %>
+        </footer>
+      </div>
+    </div>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
+>>>>>>> 16b06deb668f0981d0c1f8369c5e9c8fd1500306
