@@ -7,6 +7,10 @@
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
+    <%= f.input :profile_name, required: true, placeholder: 'Profile name (a custom profile url)' %>	
+    <%= f.input :country, required: true, priority: ["United States"] %>
+    <%= f.input :gender, collection: [:male, :female] %>
+    <%= f.input :age %>
   </div>
 
   <div class="form-actions">
