@@ -41,6 +41,7 @@ class AuthenticationController < ApplicationController
 
     if user
       update_authentication_token(user, params[:user][:remember_me])
+      user.last_signed_in_on = DateTime.now
       user.save
       session[:user_id] = user.id
       flash[:notice] = 'Welcome!'
@@ -65,6 +66,8 @@ class AuthenticationController < ApplicationController
 
     if @user.valid?
       update_authentication_token(@user, nil)
+      @user.signed_up_on = DateTime.now
+      @user.last_signed_in_on = @user.signed_up_on
       @user.save
       UserMailer.welcome_email(@user).deliver
       session[:user_id] = @user.id
