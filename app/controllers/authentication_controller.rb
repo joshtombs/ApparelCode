@@ -66,6 +66,7 @@ class AuthenticationController < ApplicationController
     if @user.valid?
       update_authentication_token(@user, nil)
       @user.save
+      UserMailer.welcome_email(@user).deliver
       session[:user_id] = @user.id
       flash[:notice] = 'Welcome.'
       redirect_to :root
