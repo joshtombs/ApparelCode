@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get "signed_out" => "authentication#signed_out"
   get "new_user" => "authentication#new_user"
+
+  put "new_user" => "authentication#register"
 end
