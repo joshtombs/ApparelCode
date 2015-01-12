@@ -3,6 +3,11 @@ class AuthenticationController < ApplicationController
     @user = User.new
   end
 
+  def signed_out
+    session[:user_id] = nil
+    flash[:notice] = "You have been signed out."
+  end
+
   def login
     @user = User.new
     username_or_email = params[:user][:username]
@@ -17,6 +22,7 @@ class AuthenticationController < ApplicationController
     end
 
     if user
+      session[:user_id] = user.id
       flash[:notice] = 'Welcome!'
       redirect_to :root
     else
