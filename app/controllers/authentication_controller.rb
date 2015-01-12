@@ -1,8 +1,13 @@
 class AuthenticationController < ApplicationController
   before_filter :check_signed_in, only: [:sign_in, :new_user]
+  before_filter :ensure_signed_in, only: [:account_settings]
 
   def check_signed_in
     redirect_to :root unless !!session[:user_id].nil?
+  end
+
+  def ensure_signed_in
+    redirect_to :root unless !session[:user_id].nil?
   end
 
   def sign_in
