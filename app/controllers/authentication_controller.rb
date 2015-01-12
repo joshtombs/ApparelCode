@@ -17,9 +17,11 @@ class AuthenticationController < ApplicationController
     end
 
     if user
+      flash[:notice] = 'Welcome!'
       redirect_to :root
     else
       #sign in failed
+      flash[:error] = "Sign in failed. Please check username/password combination."
       render :action => "sign_in"
     end
 
