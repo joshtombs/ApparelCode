@@ -13,4 +13,10 @@ Rails.application.routes.draw do
 
   get "account_settings" => "authentication#account_settings"
   put "account_settings" => "authentication#set_account_info"
+
+  get "forgot_password" => "authentication#forgot_password"
+  put "forgot_password" => "authentication#send_password_reset_instructions"
+
+  get "password_reset" => "authentication#password_reset"
+  put "password_reset" => "authentication#new_password"
 end
