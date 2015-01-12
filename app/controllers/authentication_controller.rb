@@ -1,4 +1,10 @@
 class AuthenticationController < ApplicationController
+  before_filter :check_signed_in, only: [:sign_in, :new_user]
+
+  def check_signed_in
+    redirect_to :root unless !!session[:user_id].nil?
+  end
+
   def sign_in
     @user = User.new
   end
