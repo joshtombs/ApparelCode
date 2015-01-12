@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # attr_accessible :email, :username, :password, :password_confirmation
-  attr_accessor :password, :new_password, :previous_email, :previous_username
+  attr_accessor :password, :new_password, :previous_email, :previous_username, :remember_me
   before_save :encrypt_password
 
   validates_confirmation_of :password
@@ -59,6 +59,6 @@ class User < ActiveRecord::Base
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :new_password, :new_password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :new_password, :new_password_confirmation, :remember_me)
   end
 end

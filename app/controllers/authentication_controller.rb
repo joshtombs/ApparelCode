@@ -15,8 +15,15 @@ class AuthenticationController < ApplicationController
   end
 
   def signed_out
-    session[:user_id] = nil
-    flash[:notice] = "You have been signed out."
+    user = User.find_by_id(session[:user_id])
+    if user
+      update_authentication_token(user, nil)
+      user.save
+      session[:user_id] = nil
+      flash[:notice] = "You have been signed out."
+    else
+      redirect_to :sign_in
+    end
   end
 
   def login
@@ -33,6 +40,8 @@ class AuthenticationController < ApplicationController
     end
 
     if user
+      update_authentication_token(user, params[:user][:remember_me])
+      user.save
       session[:user_id] = user.id
       flash[:notice] = 'Welcome!'
       redirect_to :root
@@ -55,6 +64,7 @@ class AuthenticationController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
 
     if @user.valid?
+      update_authentication_token(@user, nil)
       @user.save
       session[:user_id] = @user.id
       flash[:notice] = 'Welcome.'
@@ -62,6 +72,27 @@ class AuthenticationController < ApplicationController
     else
       render :action => "new_user"
     end
+  end
+
+  def update_authentication_token(user, remember_me)
+    if remember_me == 1
+      # create an authentication token if the user has clicked on remember me
+      auth_token = SecureRandom.urlsafe_base64
+      user.authentication_token = auth_token
+      cookies.permanent[:auth_token] = auth_token
+    else # nil or 0
+      # if not, clear the token, as the user doesn't want to be remembered.
+      user.authentication_token = nil
+      cookies.permanent[:auth_token] = nil
+    end
+  end
+
+  def current_user
+    # Note: we want to use "find_by_id" because it's OK to return a nil.
+    # If we were to use User.find, it would throw an exception if the user can't be found.
+    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by_authentication_token(cookies[:auth_token]) if cookies[:auth_token] && @current_user.nil?
+    @current_user
   end
 
   def account_settings
