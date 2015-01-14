@@ -82,4 +82,10 @@ class AdminController < ApplicationController
   def users
     @users = User.all
   end
+
+  def delete_user
+    User.find_by_id(params[:id]).delete
+    @users = User.all
+    render :action => :users
+  end
 end

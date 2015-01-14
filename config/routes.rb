@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "account_settings" => "admin#account_settings"
     put "account_settings" => "admin#set_account_info"
     get "users" => "admin#users"
+    delete "user/:id" => "admin#delete_user"
   end
 
   get "sign_in" => "authentication#sign_in"
