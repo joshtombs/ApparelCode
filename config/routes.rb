@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "signed_out" => "admin#signed_out"
     get "account_settings" => "admin#account_settings"
     put "account_settings" => "admin#set_account_info"
+    get "users" => "admin#users"
   end
 
   get "sign_in" => "authentication#sign_in"

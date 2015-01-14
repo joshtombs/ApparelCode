@@ -78,4 +78,8 @@ class AdminController < ApplicationController
     @current_admin ||= Admin.find_by_id(session[:admin_id]) if session[:admin_id]
     @current_admin
   end
+
+  def users
+    @users = User.all
+  end
 end
