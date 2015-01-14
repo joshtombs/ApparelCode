@@ -27,7 +27,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', :require=>'bcrypt'
-
+gem 'rails_12factor'
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 # Use unicorn as the app server
