@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  scope 'admin' do
+    get "sign_in" => "admin#sign_in"
+    post "sign_in" => "admin#login"
+    get "signed_out" => "admin#signed_out"
+  end
+
   get "sign_in" => "authentication#sign_in"
   post "sign_in" => "authentication#login"
 
