@@ -1,4 +1,15 @@
 class AdminController < ApplicationController
+  before_filter :check_signed_in, only: [:sign_in]
+  before_filter :ensure_signed_in, only: [:account_settings, :signed_out, :users]
+
+  def check_signed_in
+    redirect_to :root unless !!session[:admin_id].nil?
+  end
+
+  def ensure_signed_in
+    redirect_to admin_sign_in_path unless !session[:admin_id].nil?
+  end
+
   def users
     @users = User.all
   end
