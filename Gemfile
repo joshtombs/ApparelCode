@@ -1,7 +1,4 @@
 source 'https://rubygems.org'
-gem 'foundation-rails'
-gem 'simple_form'
-gem 'country_select'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -40,3 +37,5 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
