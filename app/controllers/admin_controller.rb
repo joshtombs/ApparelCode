@@ -37,6 +37,43 @@ class AdminController < ApplicationController
     flash[:notice] = "You have been signed out."
   end
 
+  def account_settings
+    @admin = current_admin
+  end
+
+  def set_account_info
+    old_admin = current_admin
+
+    # verify the current password by creating a new user record.
+    @admin = Admin.authenticate_by_username(old_admin.username, params[:admin][:password])
+
+    # verify
+    if @admin.nil?
+      @admin = current_admin
+      @admin.errors[:password] = "Password is incorrect."
+      render :action => "account_settings"
+    else
+      # update the user with any new username and email
+      @admin.username = params[:admin][:username]
+      @admin.email = params[:admin][:email]
+      @admin.new_password = params[:admin][:new_password]
+      @admin.new_password_confirmation = params[:admin][:new_password_confirmation]
+      # Set the old email and username, which is validated only if it has changed.
+      @admin.previous_email = old_admin.email
+      @admin.previous_username = old_admin.username
+
+      if @admin.valid?
+        # If there is a new_password value, then we need to update the password.
+        @admin.password = @admin.new_password unless @admin.new_password.nil? || @admin.new_password.empty?
+        @admin.save
+        flash[:notice] = 'Account settings have been changed.'
+        redirect_to :root
+      else
+        render :action => "account_settings"
+      end
+    end
+  end
+
   def current_admin
     @current_admin ||= Admin.find_by_id(session[:admin_id]) if session[:admin_id]
     @current_admin

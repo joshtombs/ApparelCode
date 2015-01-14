@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +14,7 @@
       <% if current_admin%>
         Logged in as Administrator <%= current_admin.username %>
         <%= link_to "Sign Out", signed_out_path %>
+        <%= link_to "Account Settings", admin_account_settings_path %>
       <% elsif current_user %>
         Logged in as <%= current_user.username %>
         <%= link_to "Sign Out", signed_out_path %>

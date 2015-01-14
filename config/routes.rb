@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "sign_in" => "admin#sign_in"
     post "sign_in" => "admin#login"
     get "signed_out" => "admin#signed_out"
+    get "account_settings" => "admin#account_settings"
   end
 
   get "sign_in" => "authentication#sign_in"
