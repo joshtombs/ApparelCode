@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :on => :create
   validates_uniqueness_of :email
   validates_uniqueness_of :username
+  validates_presence_of :country, :on => :create
+  validates_presence_of :city, :on => :create
+  validates_presence_of :age, :on => :create
 
   ####Validations for Account settings
   validates_confirmation_of :new_password, :if => Proc.new {|user| !user.new_password.nil? && !user.new_password.empty? }
@@ -59,6 +62,6 @@ class User < ActiveRecord::Base
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :new_password, :new_password_confirmation, :remember_me)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :new_password, :new_password_confirmation, :remember_me, :age, :country, :city)
   end
 end

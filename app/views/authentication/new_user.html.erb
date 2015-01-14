@@ -11,6 +11,21 @@
     <%= show_field_error(@user, :email) %>
   </p>
   <p>
+    <%= f.label 'country:' %><br/>
+    <%= f.select(:country, options_for_select(@countries, "United States")) %>
+    <%= show_field_error(@user, :country) %>
+  </p>
+  <p>
+    <%= f.label 'city:' %><br/>
+    <%= f.text_field :city %>
+    <%= show_field_error(@user, :city) %>
+  </p>
+  <p>
+    <%= f.label 'age:' %><br/>
+    <%= f.select :age, options_for_select(13..90) %>
+    <%= show_field_error(@user, :age) %>
+  </p>
+  <p>
     <%= f.label 'password:' %><br/>
     <%= f.password_field :password %>
     <%= show_field_error(@user, :password) %>
