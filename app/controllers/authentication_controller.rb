@@ -67,6 +67,7 @@ class AuthenticationController < ApplicationController
     @user.country = params[:user][:country]
     @user.city = params[:user][:city].titleize
     @user.age = params[:user][:age]
+    @user.title = params[:user][:title].titleize
 
     if @user.valid?
       update_authentication_token(@user, nil)
@@ -125,6 +126,7 @@ class AuthenticationController < ApplicationController
       @user.email = params[:user][:email]
       @user.country = params[:user][:country]
       @user.city = params[:user][:city].titleize
+      @user.title = params[:user][:title].titleize
       @user.age = params[:user][:age]
       @user.new_password = params[:user][:new_password]
       @user.new_password_confirmation = params[:user][:new_password_confirmation]
