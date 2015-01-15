@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get "password_reset" => "authentication#password_reset"
   put "password_reset" => "authentication#new_password"
 
+  get "people" => "home#people"
 
   get '*path' => redirect('/')
 end
