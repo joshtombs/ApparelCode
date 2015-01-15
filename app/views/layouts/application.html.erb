@@ -29,6 +29,8 @@
         <%= link_to image_tag("/assets/gear.png", class: "nav-icon"), admin_account_settings_path %>
         <%= link_to "Users", admin_users_path %>
         <% elsif current_user %>
+        <%= image_tag("/assets/message-icon.png", class: "nav-icon") %>
+        <%= image_tag("/assets/notification-icon.png", class: "nav-icon") %>
           <%= current_user.username %>
           <%= link_to image_tag("/assets/gear.png", class: "nav-icon"), account_settings_path %>
           <%= link_to "Sign Out", signed_out_path %>
