@@ -8,11 +8,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class='container-fluid'>
     <div class='top-nav container-fluid'>
       <div class='top-nav-menu col-md-2 shaded'>
         Menu &nbsp;
-        <%= image_tag("/assets/3strips.png") %>
+        <%= image_tag("/assets/3strips.png", class:"strip-button") %>
       </div>
       <div class='top-nav-links col-md-3'>
         <a href="/"><span class="col-md-4 current"> AC </span></a>
@@ -38,12 +38,38 @@
         <% end %>
       </div>
     </div>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
+    <div class='side-nav col-md-2'>
+      <div class='col-md-12'>
+        <%= image_tag("/assets/AC-Letters.jpg", class:"col-md-12 logo") %>
+      </div>
+      <div class='nav-item col-md-12'>
+        News Feed
+      </div>
+      <div class='nav-item col-md-12'>
+        Message 
+      </div>
+      <div class='nav-item col-md-12'>
+        Events 
+      </div>
+      <div class='nav-item bottom-item col-md-12'>
+        Wish List 
+      </div>
+      <div class='nav-item col-md-12'>
+        Featured 
+      </div>
+      <div class='nav-item col-md-12'>
+        Popular
+      </div>
+      <div class='nav-item col-md-12'>
+        New
+      </div>
+    </div>
+    <div class='content col-md-10'>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
 
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-
+      <%= yield %>
+    </div>
   </body>
 </html>
