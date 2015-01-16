@@ -1,0 +1,68 @@
+/* Large desktops and laptops */
+@media (min-width: 1200px)
+
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px)
+
+
+/* Portrait tablets and small desktops */
+@media (min-width: 853px) and (max-width: 991px)
+  .side-nav
+    .logo
+      max-width: 77px
+    .nav-item
+      padding: 4px
+      font-size: 13px
+
+  .button
+    font-size: 13px
+    height: 25px
+
+@media (min-width: 768px) and (max-width: 852px)
+  .side-nav
+    .logo
+      max-width: 77px
+    .nav-item
+      padding: 4px
+      font-size: 13px
+
+  .button
+    font-size: 13px
+    height: 20px
+    .login, .join
+      padding-top: 0px
+
+  .col-sm-10
+    .login, .join
+      max-width: 60px
+
+  .col-sm-12
+    .login, .join
+      max-width: auto
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px)
+  .top-nav-menu, .side-nav
+    display: none
+
+  .top-nav-links
+    padding-top: 10px
+    display: inline
+    text-align: center
+
+  .login, .join
+    display: none
+
+/* Landscape phones and smaller */
+@media (max-width: 480px)
+  .top-nav-menu, .side-nav
+    display: none
+
+  .top-nav-links
+    padding-top: 10px
+    display: inline
+    text-align: center
+
+  .login, .join
+    display: none
