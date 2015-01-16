@@ -21,6 +21,7 @@ class AuthenticationController < ApplicationController
       user.save
       session[:user_id] = nil
       flash[:notice] = "You have been signed out."
+      redirect_to :root
     else
       redirect_to :sign_in
     end
