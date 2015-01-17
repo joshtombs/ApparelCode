@@ -2,9 +2,9 @@
   <%= image_tag("/assets/AC_top.png", class: 'banner-image') %>
 </div>
 <% if !current_user %>
-  <div class="button col-md-4 col-sm-4">
+  <div class="button col-md-4 col-sm-4 hidden-xs">
   </div>
-  <div class="button col-md-4 col-sm-4">
+  <div class="button col-md-4 col-sm-4 hidden-xs">
     <%= link_to sign_in_path do %>
       <div class="button login col-md-5 col-sm-5">
         Login
@@ -17,7 +17,7 @@
       </div>
     <% end %>
   </div>
-  <div class="button col-md-4 col-sm-4">
+  <div class="button col-md-4 col-sm-4 hidden-xs">
   </div>
 <% end %>
 <div class ="col-md-12">
