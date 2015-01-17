@@ -1,0 +1,27 @@
+<h1>New Post</h1>
+<%= form_for @post, :as => :post, :url => new_post_path, :method => :put do |f| %>
+  <p>
+    <%= f.label 'name:' %><br/>
+    <%= f.text_field :name %>
+    <%= show_field_error(@post, :name) %>
+  </p>
+  <p>
+    <%= f.label 'description:' %><br/>
+    <%= f.text_area :description %>
+    <%= show_field_error(@post, :description) %>
+  </p>
+  <p>
+    <%= f.label 'tags:' %><br/>
+    <%= f.text_field :tags %>
+    <%= show_field_error(@post, :tags) %>
+  </p>
+  <p>
+    <%= f.label 'items:' %><br/>
+    <%= f.text_field :items %>
+    <%= show_field_error(@post, :items) %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>&nbsp;&nbsp;&nbsp;
+    <%= f.submit 'Clear Form', :type => 'reset' %>
+  </p>
+<% end %>
