@@ -20,3 +20,18 @@
   <div class="button col-md-4 col-sm-4">
   </div>
 <% end %>
+<div class ="col-md-12 posts-container">
+  <% for post in @posts %>
+    <div class="col-md-4 col-xs-12 post-container">
+      <div class="caption-window">
+        <div class="caption top">
+          Views<br \>Likes 
+        </div>
+        [Image]
+        <div class="caption bottom">
+          <%= post.name %><br />
+        </div>
+      </div>
+    </div>
+  <% end%>
+</div>
