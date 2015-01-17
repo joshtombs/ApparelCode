@@ -21,3 +21,48 @@
 .join
   background-color: #81f1f2
   padding-top: 4px
+
+.posts-container
+  margin-top: 25px
+
+.post-container
+  overflow: hidden
+  position: relative
+  display: inline
+
+.post-image
+  width: 100%
+  &:hover
+    opacity: 0.4
+
+.caption-window
+  position: relative
+
+.caption
+  height: 50px
+  position: absolute
+  width: 100%
+  color: #FFFFFF
+  background-color: rgba(0,0,0,0.4)
+  font-family: Century Gothic, sans-serif
+  -webkit-transition: all 0.5s ease-out
+  -moz-transition: all 0.5s ease-out
+  transition: all 0.5s ease-out
+
+.top
+  top: -50px
+
+.bottom
+  bottom: -50px
+
+.post-container:hover .top
+  top: 0px
+  -webkit-transition: all 0.25s ease-out
+  -moz-transition: all 0.25s ease-out
+  transition: all 0.25s ease-out
+
+.post-container:hover .bottom
+  bottom: 0px
+  -webkit-transition: all 0.25s ease-out
+  -moz-transition: all 0.25s ease-out
+  transition: all 0.25s ease-out
