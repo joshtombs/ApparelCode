@@ -9,69 +9,8 @@
     <%= csrf_meta_tags %>
   </head>
   <body class='container-fluid'>
-    <div class='top-nav container-fluid'>
-      <div class='top-nav-menu col-md-2 shaded'>
-        Menu &nbsp;
-        <%= image_tag("/assets/3strips.png", class:"strip-button") %>
-      </div>
-      <div class='top-nav-links col-md-3'>
-        <a href="/"><span class="col-md-4 current"> AC </span></a>
-        <a href="/"><span class="col-md-4 noncurrent"> Market </span></a>
-        <a href="/"><span class="col-md-4 noncurrent"> Store </span></a>
-      </div>
-      <div class='top-nav-search col-md-4'>
-        <input class='search-bar' placeholder="Search for users, styles, brands, and more" />
-      </div>
-      <div class='top-nav-profile col-md-3'>
-        <% if current_admin%>
-        Admin <%= current_admin.username %>
-        <%= link_to "Sign Out", admin_signed_out_path %>
-        <%= link_to image_tag("/assets/gear.png", class: "nav-icon"), admin_account_settings_path %>
-        <%= link_to "Users", admin_users_path %>
-        <% elsif current_user %>
-        <%= image_tag("/assets/message-icon.png", class: "nav-icon") %>
-        <%= image_tag("/assets/notification-icon.png", class: "nav-icon") %>
-          <%= current_user.username %>
-          <%= link_to image_tag("/assets/gear.png", class: "nav-icon"), account_settings_path %>
-          <%= link_to "Sign Out", signed_out_path %>
-        <% else %>
-          <%= link_to "Sign up", new_user_path %> or
-          <%= link_to "Sign In", sign_in_path %>
-        <% end %>
-      </div>
-    </div>
-    <div class='side-nav col-md-2'>
-      <div class='col-md-12'>
-        <%= image_tag("/assets/AC-Letters.jpg", class:"col-md-12 logo") %>
-      </div>
-      <div class='nav-item col-md-12'>
-        News Feed
-      </div>
-      <div class='nav-item col-md-12'>
-        Message 
-      </div>
-      <div class='nav-item col-md-12'>
-        Events 
-      </div>
-      <div class='nav-item bottom-item col-md-12'>
-        Wish List 
-      </div>
-      <div class='nav-item col-md-12'>
-        Featured 
-      </div>
-      <div class='nav-item col-md-12'>
-        Popular
-      </div>
-      <div class='nav-item col-md-12'>
-        New
-      </div>
-      <div class='people-button nav-item col-md-12'>
-        People
-      </div>
-      <div class='post-outfit nav-item col-md-12'>
-        Post an Outfit
-      </div>
-    </div>
+    <%= render "shared/top_nav" %>
+    <%= render "shared/side_nav" %>
     <div class='content col-md-10'>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
