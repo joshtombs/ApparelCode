@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # attr_accessible :email, :username, :password, :password_confirmation
   attr_accessor :password, :new_password, :previous_email, :previous_username, :remember_me
   before_save :encrypt_password
+  has_many :posts
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
