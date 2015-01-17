@@ -32,5 +32,8 @@ Rails.application.routes.draw do
 
   get "people" => "home#people"
 
+  get "new_post" => "post#new_post"
+  put "new_post" => "post#create_post"
+
   get '*path' => redirect('/')
 end
