@@ -24,10 +24,10 @@
   <% for post in @posts %>
     <div class="col-md-4 col-xs-12 post-container">
       <div class="caption-window">
+      <%= image_tag("/assets/rectangle_pics/" + post.id.to_s + ".jpg", class: "post-image") %>
         <div class="caption top">
           Views<br \>Likes 
         </div>
-        [Image]
         <div class="caption bottom">
           <%= post.name %><br />
         </div>
