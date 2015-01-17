@@ -26,7 +26,7 @@
       <div class="caption top">
         <%= post.name %>
       </div>
-      [Image]
+      <%= image_tag("/assets/rectangle_pics/" + post.id.to_s + ".jpg", class: "post-image") %>
       <div class="caption bottom">
         <%= post.description %>
       </div>
