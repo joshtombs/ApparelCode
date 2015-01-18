@@ -10,6 +10,7 @@ class PostController < ApplicationController
     @post.tags = params[:post][:tags]
     @post.items = params[:post][:items]
     @post.user_id = current_user.id
+    @post.user_name = current_user.username
     if @post.valid?
       @post.save
       flash[:notice] = 'Post created.'
