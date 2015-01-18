@@ -7,6 +7,6 @@ class Post < ActiveRecord::Base
 
   private
   def post_params
-    params.require(:post).permit(:name, :user_id, :description, :items, :tags)
+    params.require(:post).permit(:name, :user_id, :description, :items, :tags, :user_name)
   end
 end
