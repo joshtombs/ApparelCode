@@ -1,7 +1,8 @@
 class AuthenticationController < ApplicationController
-  before_filter :check_signed_in, only: [:sign_in, :new_user]
-  before_filter :ensure_signed_in, only: [:account_settings]
-
+  # before_filter :check_signed_in, only: [:sign_in, :new_user]
+  # before_filter :ensure_signed_in, only: [:account_settings]
+  respond_to :html, :json
+  
   def check_signed_in
     redirect_to :root unless !!session[:user_id].nil?
   end
@@ -10,8 +11,15 @@ class AuthenticationController < ApplicationController
     redirect_to :root unless !session[:user_id].nil?
   end
 
+  def show_users
+    @users = User.all
+    respond_with(@users)
+  end
+    
   def sign_in
+    session[:user_id] = nil
     @user = User.new
+    render :partial => "/shared/sign_in"
   end
 
   def signed_out
@@ -45,12 +53,16 @@ class AuthenticationController < ApplicationController
       user.last_signed_in_on = DateTime.now
       user.save
       session[:user_id] = user.id
-      flash[:notice] = 'Welcome!'
-      redirect_to :root
+      # flash[:notice] = 'Welcome!'
+      # redirect_to :root
+      render :partial => "shared/sign_in_successful"
     else
-      #sign in failed
-      flash[:error] = "Sign in failed. Please check username/password combination."
-      render :action => "sign_in"
+      # render :partial => "/shared/sign_in"
+      # render :action => "sign_in"
+      
+      # flash[:error] = "Sign in failed. Please check username/password combination."
+      # render :action => "sign_in"
+      render :partial => "shared/sign_in_unsuccessful"
     end
   end
 

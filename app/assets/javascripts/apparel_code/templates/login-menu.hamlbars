@@ -1,0 +1,4 @@
+.overlay-form
+  .close-overlay
+    %a.close{href: ""} X &nbsp;
+  .form

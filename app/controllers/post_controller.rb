@@ -1,6 +1,12 @@
 class PostController < ApplicationController
+  respond_to :html, :json
   def new_post
     @post = Post.new
+  end
+
+  def show_posts
+    @posts = Post.all
+    respond_with(@posts)
   end
 
   def create_post

@@ -1,0 +1,14 @@
+.person-tile.col-md-4
+  .col-md-6
+    [image]
+  .col-md-6
+    = hb('username')
+    %br
+    = hb('age')
+    Year Old
+    %br
+    = hb('title')
+    %br
+    = hb('city')
+    %br
+    = hb('country')
