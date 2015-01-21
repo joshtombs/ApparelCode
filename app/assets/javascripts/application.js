@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require fancybox
 //= require_tree .
+
+$(document).ready(function() {
+  $('a.fancybox').fancybox({"parent": 'body'});
+});

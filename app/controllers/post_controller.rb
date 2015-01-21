@@ -1,5 +1,6 @@
 class PostController < ApplicationController
   def new_post
+    @user = User.new
     @post = Post.new
   end
 

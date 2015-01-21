@@ -24,8 +24,9 @@
       <%= link_to image_tag("/assets/gear.png", class: "nav-icon"), account_settings_path %>
       <%= link_to "Sign Out", signed_out_path %>
     <% else %>
-      <%= link_to "Sign up", new_user_path %> or
-      <%= link_to "Sign In", sign_in_path %>
+      <%= link_to "Sign Up", new_user_path %> or
+      <%= link_to "Sign In", "#sign-in", class: "fancybox" %>
     <% end %>
   </div>
 </div>
+<%= render "shared/sign_in" %>

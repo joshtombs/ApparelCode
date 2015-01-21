@@ -10,10 +10,6 @@ class AuthenticationController < ApplicationController
     redirect_to :root unless !session[:user_id].nil?
   end
 
-  def sign_in
-    @user = User.new
-  end
-
   def signed_out
     user = User.find_by_id(session[:user_id])
     if user
@@ -50,7 +46,7 @@ class AuthenticationController < ApplicationController
     else
       #sign in failed
       flash[:error] = "Sign in failed. Please check username/password combination."
-      render :action => "sign_in"
+      redirect_to :root
     end
   end
 
