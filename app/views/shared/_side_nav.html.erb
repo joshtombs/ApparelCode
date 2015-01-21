@@ -28,7 +28,17 @@
       People
     </div>
   <% end %>
-  <div class='post-outfit nav-item col-md-12'>
-    Post an Outfit
-  </div>
+  <% if current_user %>
+    <%= link_to new_post_path do %>
+      <div class='post-outfit nav-item col-md-12'>
+        Post an Outfit
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to sign_in_path do %>
+      <div class='post-outfit nav-item col-md-12'>
+        Post an Outfit
+      </div>
+    <% end %>
+  <% end %>
 </div>
