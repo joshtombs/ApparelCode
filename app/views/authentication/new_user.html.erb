@@ -11,6 +11,11 @@
     <%= show_field_error(@user, :email) %>
   </p>
   <p>
+    <%= f.label 'title: (Ex: \'Fashion Blogger\')' %><br/>
+    <%= f.text_field :title %>
+    <%= show_field_error(@user, :title) %>
+  </p>
+  <p>
     <%= f.label 'country:' %><br/>
     <%= f.select(:country, options_for_select(@countries, "United States")) %>
     <%= show_field_error(@user, :country) %>

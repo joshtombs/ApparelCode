@@ -1,0 +1,15 @@
+<div class='fluid-container'>
+  <% for user in @users %>
+    <div class='person-tile col-md-4'>
+      <div class='col-md-6'>
+        [image]
+      </div>
+      <div class='col-md-6'>
+        <%= user.username %><br />
+        <%= user.age %> Year Old<br />
+        <%= user.title %><br />
+        <%= user.city %>, <%= user.country %><br />
+      </div>
+    </div>
+  <% end %>
+</div>
