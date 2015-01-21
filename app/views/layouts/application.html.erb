@@ -9,14 +9,15 @@
     <%= csrf_meta_tags %>
   </head>
   <body class='container-fluid'>
-    <%= render "shared/top_nav" %>
-    <%= render "shared/side_nav" %>
-    <div class='content col-md-10'>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-
-      <%= yield %>
+    <div class='page-container container-fluid'>
+      <%= render "shared/top_nav" %>
+      <%= render "shared/side_nav" %>
+      <div class='content col-md-10 col-sm-10'>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
