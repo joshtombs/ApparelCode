@@ -16,6 +16,7 @@ class AdminController < ApplicationController
 
   def sign_in
     @admin = Admin.new
+    @user = User.new
   end
 
   def login
