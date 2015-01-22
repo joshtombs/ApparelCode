@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   get "new_post" => "post#new_post"
   put "new_post" => "post#create_post"
 
+  resources :post, only: [:show]
+
   get '*path' => redirect('/')
 end

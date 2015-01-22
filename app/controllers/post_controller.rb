@@ -1,4 +1,6 @@
 class PostController < ApplicationController
+  respond_to :html, :js
+
   def new_post
     @user = User.new
     @post = Post.new
@@ -19,5 +21,10 @@ class PostController < ApplicationController
     else
       render :action => "new_post"
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
   end
 end

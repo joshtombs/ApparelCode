@@ -23,16 +23,25 @@
 <div class ="col-md-12">
   <% for post in @posts %>
     <div class="col-md-4 col-xs-12 post-container">
-      <div class="caption-window">
-      <%= image_tag("/assets/rectangle_pics/" + post.id.to_s + ".jpg", class: "post-image") %>
-        <div class="caption top">
-          Views<br \>Likes 
+      <%= link_to post_path(post), remote: true do %>
+        <div class="caption-window">
+          <%= image_tag("/assets/rectangle_pics/" + post.id.to_s + ".jpg", class: "post-image") %>
+          <div class="caption top">
+            Views<br \>Likes
+          </div>
+          <div class="caption bottom">
+            <span><%= post.name.titleize %></span><br />
+            <%= post.user_name %>
+          </div>
         </div>
-        <div class="caption bottom">
-          <span><%= post.name.titleize %></span><br />
-          <%= post.user_name %>
-        </div>
-      </div>
+      <% end %>
     </div>
   <% end%>
+</div>
+
+<div class="modal fade" id= "postModal" tabindex="-1" role = "dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content col-md-12">
+    </div>
+  </div>
 </div>
