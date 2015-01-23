@@ -9,6 +9,13 @@
     App.appRouter = new App.Routers.AppRouter({
       controller: new App.Controllers.AppController
     })
+    
+    App.CurrentUser = JSON.parse($.ajax({
+        type: "GET",
+        url: 'current_user',
+        async: false
+    }).responseText)
+
     App.HomeLayout = new App.Views.HomeLayout
     App.pageRegion.show App.HomeLayout
 

@@ -17,11 +17,6 @@
 %a.virtual{:href => "/people"}
   .people-button.nav-item.col-md-12
     People
-//- if current_user
-%a.virtual{:href => "/"}
+%a.virtual{:href => "/create_post"}
   .post-outfit.nav-item.col-md-12
     Post an Outfit
-//- else
-//  %a{:href => "/"}
-//    .post-outfit.nav-item.col-md-12
-//      Post an Outfit

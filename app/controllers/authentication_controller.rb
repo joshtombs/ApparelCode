@@ -32,8 +32,10 @@ class AuthenticationController < ApplicationController
       user.save
       session[:user_id] = nil
       flash[:notice] = "You have been signed out."
+      # respond_to root_path
     else
       flash[:error] = "You must be signed in to do this."
+      # respond_to root_path
     end
   end
 

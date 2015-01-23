@@ -19,8 +19,10 @@
     signed_out: ->
       $.get('/signed_out').complete(
         (data) ->
-          App.appRouter.navigate '/', trigger: 1
+          App.appRouter.navigate '/', trigger: 0
+          App.CurrentUser = null
+          App.HomeLayout.refreshTopNav()
       )
 
     account_settings: ->
-      @.get("/account_settings")
+      $.get("/account_settings")

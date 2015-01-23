@@ -5,11 +5,8 @@
     regions:
       userRegion: ".top-nav-profile"
 
-    initialize: (options) ->
-      @user = options
-
     onShow: ->
-      if @user.username
-        @userRegion.show new App.Views.UserLoggedInNav(@user)
+      if !!App.CurrentUser
+        @userRegion.show new App.Views.UserLoggedInNav
       else
         @userRegion.show new App.Views.UserNav
