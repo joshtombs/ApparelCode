@@ -26,3 +26,6 @@
 
     account_settings: ->
       $.get("/account_settings")
+
+    show_post: (p) ->
+      $.get("/post/"+p)

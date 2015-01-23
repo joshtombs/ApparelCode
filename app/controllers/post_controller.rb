@@ -1,5 +1,5 @@
 class PostController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :js
   def new_post
     @post = Post.new
   end
@@ -23,6 +23,15 @@ class PostController < ApplicationController
       redirect_to :root
     else
       render :action => "new_post"
+    end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
     end
   end
 end

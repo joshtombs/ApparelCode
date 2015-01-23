@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get "current_admin" => "application#current_admin"
   get "current_user" => "application#current_user"
+
+  resources :post, only: [:show]
   # get '*path' => redirect('/')
 
   # namespace :admin, :module => false do
