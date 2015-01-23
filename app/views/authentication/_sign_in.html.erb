@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h2 class="modal-title">Sign In</h2>
+</div>
+<div class="modal-body">
+  <%= form_for @user, :as => :user, :url =>'/login' do |f| %>  
+    <p>
+      <%= f.text_field :username, :placeholder => "Username or Email" %>
+    </p>
+    <p>
+      <%= f.password_field :password, :placeholder => "Password" %>
+    </p>
+    <p>
+      <%= f.submit 'Sign In' %>&nbsp;&nbsp;&nbsp;
+      <%= f.submit 'Clear Form', :type => 'reset' %>
+      <p>
+        forgot your password?
+      </p>
+      <p>
+        Remember Me&nbsp;
+        <%= f.check_box :remember_me %>
+      </p>
+    </p>
+  <% end %>
+</div>

@@ -39,7 +39,8 @@ class AdminController < ApplicationController
     else
       #sign in failed
       flash[:error] = "Sign in failed. Please check username/password combination."
-      render :action => "sign_in"
+      redirect_to :root
+      # render :action => "sign_in"
     end
   end
 

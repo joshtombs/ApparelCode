@@ -1,14 +1,26 @@
 @Apparel.module 'Controllers', (Controllers, App, Backbone, Marionette, $, _) ->
   class Controllers.AppController extends Marionette.Controller
     root: ->
-      App.pageRegion.show(new App.Views.HomeLayout({
-        toShow: 'posts'
-      }))
+      App.HomeLayout.contentRegion.show( new App.Views.HomeContent)
 
     people: ->
-      App.pageRegion.show(new App.Views.HomeLayout({
-        toShow: 'people'
-      }))
+      collection = new App.Collections.Users
+      view = new App.Views.People(collection: collection)
+      collection.fetch()
+      App.HomeLayout.contentRegion.show( view)
+
+    sign_up: ->
+      App.HomeLayout.contentRegion.show( new App.Views.NewUser)
+      $.get("/sign_up")
 
     sign_in: ->
-      App.vent.trigger "loginShow"
+      $.get("/sign_in")
+
+    signed_out: ->
+      $.get('/signed_out').complete(
+        (data) ->
+          App.appRouter.navigate '/', trigger: 1
+      )
+
+    account_settings: ->
+      @.get("/account_settings")

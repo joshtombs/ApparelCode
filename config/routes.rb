@@ -6,9 +6,16 @@ Rails.application.routes.draw do
   get 'people' => 'home#people'
   get 'users' => 'authentication#show_users'
   get 'posts' => 'post#show_posts'
+  
   get "sign_in" => "authentication#sign_in"
   post "login" => "authentication#login"
-  get '*path' => redirect('/')
+  get "signed_out" => "authentication#signed_out"
+  
+  get "sign_up" => "authentication#new_user"
+
+  get "current_admin" => "application#current_admin"
+  get "current_user" => "application#current_user"
+  # get '*path' => redirect('/')
 
   # namespace :admin, :module => false do
   #   get "sign_in" => "admin#sign_in"

@@ -7,28 +7,25 @@
       sideNavRegion: '.side-nav'
       contentRegion: '.content'
 
-    events:
-      'click .button.join':  'joinClicked'
-      # 'click .button.login': 'loginClicked'
-
-    initialize: (options) ->
-      @toShow = options.toShow
-
     onShow: ->
-      @topNavRegion.show new App.Views.TopNav
+      @showTopNav()
       @sideNavRegion.show new App.Views.SideNav
-      if @toShow == 'people'
-        @showPeople()
-      else
-        @contentRegion.show new App.Views.HomeContent 
 
-    # loginClicked: -> App.vent.trigger "login:show"
-
-    showPeople: ->
-      collection = new App.Collections.Users
-      view = new App.Views.People(collection: collection)
-      collection.fetch()
-      @contentRegion.show view
-
-    joinClicked: ->
-      alert 'join button clicked'
+    showTopNav: ->
+      _this = this
+      $.get('/current_user').complete(
+        (data) ->
+          current_user = data.responseJSON
+          if(!!current_user)
+            # model = App.Models.User(_this.createParameters(current_user))
+            _this.topNavRegion.show new App.Views.TopNav(current_user)
+          else
+            $.get('/current_admin').complete(
+              (data) ->
+                current_admin = data.responseJSON
+                if(!!current_admin)
+                  _this.topNavRegion.show new App.Views.TopNav(current_admin)
+                else
+                  _this.topNavRegion.show new App.Views.TopNav
+            )
+      )

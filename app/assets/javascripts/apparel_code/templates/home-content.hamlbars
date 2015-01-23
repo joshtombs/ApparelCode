@@ -1,2 +1,6 @@
 .banner
 .posts
+
+#postModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "postModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content.col-md-12

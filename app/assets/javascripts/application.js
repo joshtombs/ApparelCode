@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require backbone-rails
 //= require backbone.marionette
+//= require handlebars.runtime
 //= require handlebars
 //= require turbolinks
 //= require bootstrap-sprockets
