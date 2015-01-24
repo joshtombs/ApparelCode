@@ -2,6 +2,10 @@ class PostController < ApplicationController
   respond_to :html, :js
   def new_post
     @post = Post.new
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def show_posts

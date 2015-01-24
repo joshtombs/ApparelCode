@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get "current_admin" => "application#current_admin"
   get "current_user" => "application#current_user"
 
+  get "create_post" => "post#new_post"
+  put "create_post" => "post#create_post"
+
   resources :post, only: [:show]
   # get '*path' => redirect('/')
 

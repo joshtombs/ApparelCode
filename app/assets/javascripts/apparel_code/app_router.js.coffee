@@ -5,5 +5,6 @@
       "sign_in":      "sign_in"
       "sign_up":      "sign_up"
       "signed_out":   "signed_out"
+      "create_post":  "create_post"
       "post/:id":     "show_post"
       "":             "root"

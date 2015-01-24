@@ -27,5 +27,15 @@
     account_settings: ->
       $.get("/account_settings")
 
+    create_post: ->
+      if !App.CurrentUser
+        $.ajax({
+          type: "GET",
+          url: "/sign_in",
+          async: false
+        })
+      App.HomeLayout.contentRegion.show new App.Views.NewPost
+      $.get("/create_post")
+
     show_post: (p) ->
       $.get("/post/"+p)
