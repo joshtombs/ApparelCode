@@ -5,4 +5,8 @@
 
     routeTrigger: (e) ->
       e.preventDefault()
-      App.appRouter.navigate $(e.currentTarget).attr('href'), trigger: 1
+      previousRoute = "/" + Backbone.history.fragment
+      if (previousRoute == $(e.currentTarget).attr('href'))
+        Backbone.history.loadUrl(Backbone.history.fragment)
+      else
+        App.appRouter.navigate $(e.currentTarget).attr('href'), trigger: 1
