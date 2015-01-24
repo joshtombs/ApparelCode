@@ -28,6 +28,9 @@
       App.HomeLayout.contentRegion.show( new App.Views.AccountSettings)
       $.get("/account_settings")
 
+    forgot_password: ->
+      $.get("/forgot_password")
+
     create_post: ->
       if !App.CurrentUser
         $.ajax({

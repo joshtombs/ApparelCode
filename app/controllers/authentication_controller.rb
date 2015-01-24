@@ -167,6 +167,10 @@ class AuthenticationController < ApplicationController
 
   def forgot_password
     @user = User.new
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def send_password_reset_instructions
@@ -184,13 +188,13 @@ class AuthenticationController < ApplicationController
       user.save
       UserMailer.reset_password_email(user).deliver
       flash[:notice] = 'Password instructions have been mailed to you. Please check your inbox.'
-      redirect_to :sign_in
+      redirect_to root_path
     else
       @user = User.new
       # put the previous value back.
       @user.username = params[:user][:username]
       @user.errors[:username] = 'is not a registered user.'
-      render :action => "forgot_password"
+      redirect_to root_path
     end
   end
 
@@ -208,7 +212,12 @@ class AuthenticationController < ApplicationController
       clear_password_reset(@user)
       @user.save
       flash[:error] = 'Password reset has expired. Please request a new password reset.'
-      redirect_to :forgot_password
+      redirect_to root_path
+    end
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
     end
   end
 
@@ -223,13 +232,13 @@ class AuthenticationController < ApplicationController
         clear_password_reset(@user)
         @user.save
         flash[:notice] = 'Your password has been reset. Please sign in with your new password.'
-        redirect_to :sign_in
+        redirect_to root_path
       else
-        render :action => "password_reset"
+        redirect_to root_path
       end
     else
       @user.errors[:new_password] = 'Cannot be blank and must match the password verification.'
-      render :action => "password_reset"
+      redirect_to root_path
     end
   end
 
