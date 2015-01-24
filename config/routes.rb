@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get "signed_out" => "authentication#signed_out"
   
   get "sign_up" => "authentication#new_user"
+  put "sign_up" => "authentication#register"
+
+  get "account_settings" => "authentication#account_settings"
+  put "account_settings" => "authentication#set_account_info"
+
 
   get "current_admin" => "application#current_admin"
   get "current_user" => "application#current_user"

@@ -19,12 +19,13 @@
     signed_out: ->
       $.get('/signed_out').complete(
         (data) ->
-          App.appRouter.navigate '/', trigger: 0
+          App.appRouter.navigate '/', trigger: 1
           App.CurrentUser = null
           App.HomeLayout.refreshTopNav()
       )
 
     account_settings: ->
+      App.HomeLayout.contentRegion.show( new App.Views.AccountSettings)
       $.get("/account_settings")
 
     create_post: ->
