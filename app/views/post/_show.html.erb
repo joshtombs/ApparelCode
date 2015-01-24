@@ -59,16 +59,22 @@
         </div>
       </div>
       <div class="col-md-5">
-        <h3>Items:</h3>
-        <ol>
-          <% @post.items.split(", ").each do |item| %>
-            <li><%= item %></li>
-          <% end %>
-        </ol>
-        <h3>Tags:</h3>
-        <%= @post.tags %>
-        <h3>Description:</h3>
-        <%= @post.description %>
+        <div class="items">
+          <h3>Items:</h3>
+          <ol>
+            <% @post.items.split(", ").each do |item| %>
+              <li><%= item %></li>
+            <% end %>
+          </ol>
+        </div>
+        <div class="tags">
+          <h3>Tags:</h3>
+          <%= @post.tags %>
+        </div>
+        <div class="description">
+          <h3>Description:</h3>
+          <%= @post.description %>
+        </div>
       </div>
     </div>
   </div>
