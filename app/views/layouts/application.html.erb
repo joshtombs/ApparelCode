@@ -10,13 +10,14 @@
   </head>
   <body class='container-fluid'>
     <div class='page-container container-fluid'>
-      <%= render "shared/top_nav" %>
-      <%= render "shared/side_nav" %>
-      <div class='content col-md-10 col-sm-10'>
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>
-        <%= yield %>
+    </div>
+    <script>
+      $(function(){ Apparel.start(); });
+    </script>
+    <div class="modal fade" id= "loginModal" tabindex="-1" role = "dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-vertical-centered">
+        <div class="modal-content col-md-12">
+        </div>
       </div>
     </div>
   </body>

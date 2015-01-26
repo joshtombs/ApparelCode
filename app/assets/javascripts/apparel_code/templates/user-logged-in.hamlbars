@@ -1,0 +1,7 @@
+= image_tag("/assets/message-icon.png", class: "nav-icon")
+= image_tag("/assets/notification-icon.png", class: "nav-icon")
+= hb('username')
+%a.virtual{:href => "/account_settings"}
+  = image_tag("/assets/gear.png", class: "nav-icon")
+%a.virtual{:href => "/signed_out"}
+  Sign Out

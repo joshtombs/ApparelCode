@@ -41,3 +41,7 @@ gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails', '4.0.2.2'
+gem 'backbone-rails'
+gem 'marionette-rails', '~> 2.2.2'
+gem 'handlebars_assets'
+gem 'hamlbars'

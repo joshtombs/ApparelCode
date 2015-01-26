@@ -1,7 +1,8 @@
 class AuthenticationController < ApplicationController
-  before_filter :check_signed_in, only: [:sign_in, :new_user]
-  before_filter :ensure_signed_in, only: [:account_settings]
-
+  # before_filter :check_signed_in, only: [:sign_in, :new_user]
+  # before_filter :ensure_signed_in, only: [:account_settings]
+  respond_to :html, :js
+  
   def check_signed_in
     redirect_to :root unless !!session[:user_id].nil?
   end
@@ -10,8 +11,17 @@ class AuthenticationController < ApplicationController
     redirect_to :root unless !session[:user_id].nil?
   end
 
+  def show_users
+    @users = User.all
+    respond_with(@users)
+  end
+    
   def sign_in
     @user = User.new
+    respond_to do |format|
+      format.js
+      format.html { redirect_to(root_path) }
+    end
   end
 
   def signed_out
@@ -21,9 +31,10 @@ class AuthenticationController < ApplicationController
       user.save
       session[:user_id] = nil
       flash[:notice] = "You have been signed out."
-      redirect_to :root
+      # respond_to root_path
     else
-      redirect_to :sign_in
+      flash[:error] = "You must be signed in to do this."
+      # respond_to root_path
     end
   end
 
@@ -48,15 +59,18 @@ class AuthenticationController < ApplicationController
       flash[:notice] = 'Welcome!'
       redirect_to :root
     else
-      #sign in failed
       flash[:error] = "Sign in failed. Please check username/password combination."
-      render :action => "sign_in"
+      redirect_to :root
     end
   end
 
   def new_user
     @user = User.new
     @countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Deps","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Rep","Chad","Chile","China","Colombia","Comoros","Congo","Congo {Democratic Rep}","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland {Republic}","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Korea North","Korea South","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar, {Burma}","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russian Federation","Rwanda","St Kitts & Nevis","St Lucia","Saint Vincent & the Grenadines","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"]
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def register
@@ -108,6 +122,10 @@ class AuthenticationController < ApplicationController
   def account_settings
     @user = current_user
     @countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua & Deps","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Rep","Chad","Chile","China","Colombia","Comoros","Congo","Congo {Democratic Rep}","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland {Republic}","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Korea North","Korea South","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar, {Burma}","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russian Federation","Rwanda","St Kitts & Nevis","St Lucia","Saint Vincent & the Grenadines","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"]
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def set_account_info
@@ -149,6 +167,10 @@ class AuthenticationController < ApplicationController
 
   def forgot_password
     @user = User.new
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def send_password_reset_instructions
@@ -166,13 +188,13 @@ class AuthenticationController < ApplicationController
       user.save
       UserMailer.reset_password_email(user).deliver
       flash[:notice] = 'Password instructions have been mailed to you. Please check your inbox.'
-      redirect_to :sign_in
+      redirect_to root_path
     else
       @user = User.new
       # put the previous value back.
       @user.username = params[:user][:username]
       @user.errors[:username] = 'is not a registered user.'
-      render :action => "forgot_password"
+      redirect_to root_path
     end
   end
 
@@ -190,7 +212,12 @@ class AuthenticationController < ApplicationController
       clear_password_reset(@user)
       @user.save
       flash[:error] = 'Password reset has expired. Please request a new password reset.'
-      redirect_to :forgot_password
+      redirect_to root_path
+    end
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
     end
   end
 
@@ -205,13 +232,13 @@ class AuthenticationController < ApplicationController
         clear_password_reset(@user)
         @user.save
         flash[:notice] = 'Your password has been reset. Please sign in with your new password.'
-        redirect_to :sign_in
+        redirect_to root_path
       else
-        render :action => "password_reset"
+        redirect_to root_path
       end
     else
       @user.errors[:new_password] = 'Cannot be blank and must match the password verification.'
-      render :action => "password_reset"
+      redirect_to root_path
     end
   end
 

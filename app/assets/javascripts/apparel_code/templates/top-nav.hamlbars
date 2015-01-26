@@ -1,0 +1,13 @@
+.top-nav-menu.col-md-2.col-sm-2.shaded
+  Menu &nbsp;
+  = image_tag("/assets/3strips.png", class: "strip-button")
+.top-nav-links.col-md-3.col-sm-3.col-xs-12
+  %a.virtual{:href => "/"}
+    %span.col-md-4.col-sm-4.current AC
+  %a.virtual{:href => "/"}
+    %span.col-md-4.col-sm-4.noncurrent Market
+  %a.virtual{:href => "/"}
+    %span.col-md-4.col-sm-4.noncurrent Store
+.top-nav-search.col-md-4.col-sm-4.col-xs-12
+  %input.search-bar{:placeholder => "Search for users, styles, brands, and more"}/
+.top-nav-profile.col-md-3.col-sm-3.col-xs-12

@@ -1,0 +1,22 @@
+.col-md-12
+  = image_tag("/assets/AC-Letters.jpg", class:"col-md-12 logo")
+.nav-item.col-md-12
+  News Feed
+.nav-item.col-md-12
+  Message
+.nav-item.col-md-12
+  Events
+.nav-item.bottom-item.col-md-12
+  Wish List
+.nav-item.col-md-12
+  Featured
+.nav-item.col-md-12
+  Popular
+.nav-item.col-md-12
+  New
+%a.virtual{:href => "/people"}
+  .people-button.nav-item.col-md-12
+    People
+%a.virtual{:href => "/create_post"}
+  .post-outfit.nav-item.col-md-12
+    Post an Outfit

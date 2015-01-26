@@ -12,6 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require backbone-rails
+//= require backbone.marionette
+//= require handlebars.runtime
+//= require handlebars
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require_tree ./apparel_code/templates
+//= require apparel_code
+//= require_tree ./apparel_code/models
+//= require_tree ./apparel_code/collections
+//= require_tree ./apparel_code/views/item
+//= require_tree ./apparel_code/views/collection
+//= require_tree ./apparel_code/views/layout
+//= require_tree ./apparel_code
 //= require_tree .

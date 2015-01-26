@@ -1,0 +1,13 @@
+.col-md-4.col-xs-12.post-container
+  %a.virtual{:href => "/post/" + hb('id')}
+    .caption-window
+      = image_tag("/assets/rectangle_pics/" + hb('id').to_s + ".jpg", class: "post-image")
+      .caption.top
+        Views
+        %br
+        Likes
+      .caption.bottom
+        %span
+          = hb('name')
+        %br/
+        = hb('user_name')

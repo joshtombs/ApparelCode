@@ -1,0 +1,81 @@
+<div class="popup-container container-fluid">
+  <div class="profile-bar col-md-2  col-xs-11">
+    <div class="profile-picture col-md-12 col-xs-6">
+      <div class="caption-window">
+        <%= image_tag("/assets/people_pics/" + @user.id.to_s + ".jpg", class: "profile-image") %>
+        <div class="caption-name">
+          <%= @user.username %> <br />
+        </div>
+      </div>
+    </div>
+    <div class="user-info col-md-12 col-xs-6">
+      <%= @user.age %> Year Old<br />
+      <%= @user.title %> <br />
+      <%= @user.city %> <br />
+      <%= @user.country %> <br />
+    </div>
+    <div class="col-md-12 hidden-xs">
+      More from <%= @user.username %> (<%= @user.posts.count %>)
+    </div>
+  </div>
+  <div class="col-xs-1 hidden-sm hidden-md hidden-lg">
+    <input type="image" src="/assets/bookmark_close.png" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;"/>
+  </div>
+  <div class="col-md-10 col-xs-12">
+    <div class="col-md-11 post-name">
+      <div class="col-md-12">
+        <div class="col-md-12">
+          <%= @post.name %>
+        </div>
+      </div>
+    </div>
+    <div class="bookmark-close col-md-1">
+      <input type="image" src="/assets/bookmark_close.png" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;"/>
+    </div>
+    <div class="col-md-12 col-xs-12">
+      <div class="col-md-7 col-xs-12">
+        <div class="left-icons col-md-6 col-xs-12">
+          Likes &amp; Views
+        </div>
+        <div class="right-icons col-md-6 hidden-xs">
+          <%= image_tag("/assets/share.png", class: "small-icon") %>
+          <%= image_tag("/assets/report.png", class: "small-icon") %>
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <%= image_tag("/assets/rectangle_pics/" + @post.id.to_s + ".jpg", class: "post-main-image") %>
+        </div>
+        <div class="post-date col-md-12 col-xs-12">
+          <span>
+            <%= image_tag("/assets/share.png", class: "small-icon hidden-sm hidden-md hidden-lg") %>
+            <%= image_tag("/assets/report.png", class: "small-icon hidden-sm hidden-md hidden-lg") %>
+          </span>
+          <%= image_tag("/assets/clock.png", class: "small-icon") %>
+          <%= @post.created_at.to_time.strftime('%B %e, %Y')%>
+        </div>
+        <div class="comments col-md-12">
+          <span class="comments-header">
+          Comments (0)
+          </span>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="items">
+          <h3>Items:</h3>
+          <ol>
+            <% @post.items.split(", ").each do |item| %>
+              <li><%= item %></li>
+            <% end %>
+          </ol>
+        </div>
+        <div class="tags">
+          <h3>Tags:</h3>
+          <%= @post.tags %>
+        </div>
+        <div class="description">
+          <h3>Description:</h3>
+          <%= @post.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

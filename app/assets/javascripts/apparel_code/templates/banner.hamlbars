@@ -1,0 +1,13 @@
+.banner-container.col-md-12.col-sm-12
+  = image_tag("/assets/AC_top.png", class: 'banner-image')
+  .buttons
+    .button.col-md-4.col-sm-4.hidden-xs
+    .button.col-md-4.col-sm-4.hidden-xs
+      %a.virtual{:href => "/sign_in"}
+        .button.login.col-md-5.col-sm-5
+          Login
+      .col-md-1.col-sm-1
+      %a.virtual{:href => "/sign_up"}
+        .button.join.col-md-5.col-sm-5
+          Join
+    .button.col-md-4.col-sm-4.hidden-xs

@@ -7,7 +7,6 @@ $(document).on('click', '.strip-button', {},
 
     if (($sideBarDIV.position().left == 0)&&($sideBarDIV.is(":visible"))){  
       $sideBarDIV.animate({ left: -$sideBarDIV.outerWidth() }, { duration: 200, queue: false, complete: function(){
-        console.log("callback");
         $(".side-nav").hide();
         $contentDIV.removeClass("col-md-10");
         $contentDIV.removeClass("col-sm-10");
